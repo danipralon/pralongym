@@ -1,0 +1,29 @@
+{% extends "model-page.html" %}
+{% block content %}
+
+<h1 style="margin-left: 116px;">Detalhes do Cliente</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{ cliente.photo.url }}" width="350" style="margin-top: 16px; border-color: coral; border-style:solid; ">    
+        </div>
+        <div class="col-sm-8" style="margin-top: 16px;" >
+            <h4><b>Nome: </b>{{ cliente.nome }}</h4>
+            <p><b>Id: </b>{{ cliente.id}}</p>
+            <p><b>Contato: </b>{{ cliente.telefone}}</p>
+            <p><b>Sexo: </b>{{ cliente.sexo}}</p>
+            <p><b>Peso atual: </b>{{ cliente.peso}}</p>
+            <p><b>Avaliação do IMC: </b>{{ cliente.avaliacao}}</p>
+            <p><b>Endreço: </b>{{ cliente.endereco}}</p>
+            <p><b>Plano: </b>{{ cliente.plano}}</p>
+            <p><b>Meta: </b>{{ cliente.meta}}</p>            
+        </div>
+        <a href="#">
+            <button type="button" class="btn btn-outline-warning">Alterar</button>
+        </a>
+        <button type="button" class="btn btn-outline-danger">Apagar</button>
+    </div>
+</div>
+
+{% endblock %}
+

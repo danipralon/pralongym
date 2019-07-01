@@ -1,0 +1,36 @@
+{% extends "model-page.html" %}
+{% block style %}
+<style>
+    .polaroid{
+        width: 250px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+    .container{
+        padding: 3px;
+    }
+    a.houver{
+        text-decoration:none; 
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Dados</h1><br>
+        <div class="row">           
+            {% for c in cliente %}
+                <div class="col-sm-4">  
+                    <a href="../detail/{{c.id}}">                 
+                        <div class="polaroid">
+                            <img src="{{ c.photo.url }}" style="width: 100%"> 
+                            <div class="container">
+                                <p><b>Nome:</b> {{ c.nome}}</p>
+                                <p><b>Id:</b> {{ c.id }}</p>
+                            </div>
+                        </div>
+                    </a> 
+                </div>
+            {% endfor %}            
+        </div>
+    </div>    
+{% endblock %}

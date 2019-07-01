@@ -1,0 +1,83 @@
+<!doctype httml>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <title>Academia</title>
+        <style type="text/css">
+                .inicio {
+                    background-image: url('media/Design.png'); 
+                    background-attachment: fixed;
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                }           
+                div#interface {
+                    background-color: rgb(0,0,0,0.5);
+                    margin: 95px 400px auto 400px;
+                    box-shadow: 0 0 10px #000000; /* sombra na caixa */
+                    color: #fff;
+                } 
+
+                p {
+                text-align: center;
+                }
+                body {
+                    font-family: 'FonteCorpo', sans-serif;
+                    text-align: center;
+                }
+                /*
+                #topo{
+                background: coral;
+                
+                }*/
+                .card-body{
+                    border: coral;
+                }
+
+                .btn-custom {
+                    color: black;
+                    background-color: coral;
+                    border: coral;
+                    padding: 1px 15px 3px 2px;
+                    border-radius: 50px;
+                    font-size: 20px;
+                }
+
+                .btn-custom:hover {
+                    background-color: #ff5350;
+                    border: #ff5350;
+                } 
+
+                .btn-icon {
+                    padding: 8px;
+                }
+
+
+        </style>
+    </head>
+    <body class="inicio" > 
+        <div id="interface" class="rounded">
+                <h1>Bem vindo(a)!</h1>
+                <br>
+                <h2>O que você deseja?</h2>  <br>
+                <a href="/dados/register/" class="btn btn-primary btn-custom">
+                    <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon"></span>
+                    Cadastrar novo Cliente</a><br><br>                
+                    <a href='/dados/all' class="btn btn-primary btn-custom">
+                    <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon"></span>
+                    Verificar dados do Cliente</a><br><br>                    
+                    <a href='/planos/' class="btn btn-primary btn-custom">
+                    <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon"></span>
+                    Verificar planos</a><br><br>
+                    <a href='logout/' class="btn btn-primary btn-custom">
+                    <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon"></span>
+                    Sair</a><br>
+                    <br>
+        </div>
+    </body>
+</html>
+

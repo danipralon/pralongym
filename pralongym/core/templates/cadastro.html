@@ -1,0 +1,98 @@
+{% extends "model-page.html" %}
+{% block content %}
+    <h1 style="text-align: center">Cadastrar novo cliente</h1>
+    <div class="container" style="padding-left: 35%">
+    <div class="row">
+        <form enctype="multipart/form-data" method="POST" >{% csrf_token %}
+            <div class="form-group">
+              <label for="nome">Nome: </label>
+              <input class="form-control" name="nome" type="text">
+            </div>  
+
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select name="sexo" class="custom-select">
+                    <option selected>Custom Select Menu</option>
+                    <option >Feminino</option>
+                    <option >Masculino</option>
+                    <option >Trans</option>
+                    <option >Gay</option>
+                    <option >Bi</option>
+                    <option >NaoBinario</option>
+                    <option>Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="data">Data de nascimento:</label>
+                <input class="form-control" name="data" type="data">
+            </div>
+            
+            <div class="form-group">
+                <label>Peso atual:</label>
+                <input class="form-control" name="peso" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Altura: </label>
+                <input class="form-control" name="altura" type="text">
+            </div>
+
+            <div class="form-group">
+                <label> IMC (peso/altura^2): </label>                
+                <input class="form-control" name="imc" type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Avaliação IMC: </label>
+                <select name="avaliacao" class="custom-select">
+                    <option selected>Custom Select Menu</option>
+                    <option > Menor que 18,5 - Abaixo do peso </option>
+                    <option > Entre 18,5 e 24,9 - Peso Normal </option>
+                    <option > Entre 25 e 29,9 - Sobrepeso </option>
+                    <option > Entre 30 e 34,9 - Obesidade grau 1</option>
+                    <option > Entre 35 e 39,9 - Obesidade grau 2</option>
+                    <option > Mais do que 40 - Obesidade grau 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label> Endereço: </label>                
+                <input class="form-control" name="endereco" type="text">
+            </div>
+
+            <div class="form-group">
+                <label >Telefone</label>
+                <input  class="form-control" name="telefone" type="text" >
+            </div>
+
+            <div class="form-group">
+                <select name="plano" class="custom-select">
+                    <option selected>Custom Select Menu</option>
+                    <option > 1 modalidade - Bronze  R$60,00 </option>
+                    <option > 2 modalidades - Prata R$100,00</option>
+                    <option > 3 modalidades - Ouro R$120,00 </option>
+                    <option > Academia liberada - Diamante R$ de um rim</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select name="meta" class="custom-select">
+                    <option selected>Custom Select Menu</option>
+                    <option > Eliminar de peso </option>
+                    <option > Ganhar massa</option>
+                    <option > Saúde </option>
+                    <option > Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <a href="/media/{{ cliente.photo }}" target="_blank">Foto atual</a>
+                <input type="file" class="form-control-file border" name="file" accept="image/*">
+            </div>  
+
+            <button  class="btn btn-default" >Cadastrar</button>
+        </form> 
+    </div>
+</div>
+{% endblock content %}

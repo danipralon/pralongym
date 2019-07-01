@@ -1,0 +1,91 @@
+<!--replica a página base-->
+{% extends "model-page.html" %}
+
+<!--aplica uma estilização apenas nesta página-->
+{% block style %}
+<style>
+div#interface {
+    margin-left: 200px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="interface">
+        <section id="team" class="my-">
+            <div class="container">
+                <div class="row"><h1>Planos</h1></div>
+                <div class="row" > 
+                    <!--separa em blocos os planos da academia-->                   
+                    <div class="col-lg-4 col-ms-8">
+                        <div class="card mb-8">
+                            <div class="card-body">
+                                <h3>Plano Bronze</h3>
+                                <p>Dá o direito de escolha a apenas uma modalidade da academia.<br>
+                                </p>
+                                <b>Por apenas:</b> R$60,00 mensais
+                            </div>                   
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-8">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h3>Plano Prata</h3>
+                                <p>Dá direito de escolha de duas da modalidades da academia.<br>
+                                <b>Por apenas:</b> R$100,00 mensais
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">                               
+                    <div class="col-lg-4 col-md-8">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h3>Plano Ouro</h3>
+                                <p>Dá direito de escolha de três de nossas modalidades da academia.<br>
+                                <b>Por apenas:</b> R$120,00 mensais
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-8">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h3>Plano Diamante</h3>
+                                <p>Dá direito a todas as modalidades da academia.<br>
+                                <b>Por apenas:</b> um rim
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>    
+           
+        </section>
+        <section class="simplePage mt-4">
+                <div class="container">
+                    <div class="row">
+                        <h1>Atividades</h1>                                              
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush" style="text-align: center; font-size: 28px; color: #ff5350">
+                    <li class="list-group-item">Muay thai</li>
+                    <li class="list-group-item">Musculação</li>
+                    <li class="list-group-item">Yoga</li>
+                    <li class="list-group-item">Jump</li>
+                    <li class="list-group-item">Pump</li>
+                    <li class="list-group-item">Aerodance </li>
+                    <li class="list-group-item">Natação</li>
+                    <li class="list-group-item">Zumba</li>
+                    <li class="list-group-item">Hidro</li>
+                    <li class="list-group-item">Spinning</li>
+                </ul>
+            </section>  
+        </div>
+    </div>          
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endblock %}
