@@ -55,8 +55,9 @@ def set_cliente(request):
     peso = request.POST.get('peso')
     altura = request.POST.get('altura')
     imc = request.POST.get('imc')
-    avaliacao_do_IMC = request.POST.get('avaliacaodoIMC')
+    avaliacao_do_IMC = request.POST.get('avaliacao')
     endereco = request.POST.get('endereco')
+    telefone = request.POST.get('telefone')
     plano = request.POST.get('plano')
     meta = request.POST.get('meta')
     file = request.FILES.get('file')
@@ -71,17 +72,68 @@ def set_cliente(request):
             cliente.peso = peso
             cliente.altura = altura
             cliente.imc = imc
-            cliente.avaliacao = avaliacao
+            cliente.avaliacao = avaliacao_do_IMC
             cliente.endereco = endereco
+            cliente.telefone = telefone
             cliente.plano = plano
             cliente.meta = meta
             if file:
                 cliente.photo = file
                 cliente.save()
     else:
-        cliente = Cliente.objects.create(nome=nome, sexo=sexo, data=data, peso=peso, altura=altura, imc=imc, avaliacao=avaliacao, endereco=endereco, plano=plano, meta=meta, user=user, photo=file )
+        cliente = Cliente.objects.create(nome=nome, sexo=sexo, data=data, peso=peso, altura=altura, imc=imc, avaliacao=avaliacao_do_IMC, endereco=endereco, telefone=telefone, plano=plano, meta=meta, user=user, photo=file )
     url = '/dados/detail/{}/'.format(cliente.id)
     return redirect(url)
+
+@login_required(login_url='/login/')
+def edit_cliente(request, id):
+    nome = request.POST.get('nome')
+    sexo = request.POST.get('sexo')
+    data = request.POST.get('data')
+    peso = request.POST.get('peso')
+    altura = request.POST.get('altura')
+    imc = request.POST.get('imc')
+    avaliacao_do_IMC = request.POST.get('avaliacao')
+    endereco = request.POST.get('endereco')
+    telefone = request.POST.get('telefone')
+    plano = request.POST.get('plano')
+    meta = request.POST.get('meta')
+    file = request.FILES.get('file')
+    id = request.POST.get('id')
+    user = request.user
+    if id:
+        cliente = Cliente.objects.get(id=id)
+        if user == cliente.user:
+            cliente.nome = nome
+            cliente.sexo = sexo
+            cliente.data = data
+            cliente.peso = peso
+            cliente.altura = altura
+            cliente.imc = imc
+            cliente.avaliacao = avaliacao_do_IMC
+            cliente.endereco = endereco
+            cliente.telefone = telefone
+            cliente.plano = plano
+            cliente.meta = meta
+            if file:
+                cliente.photo = file
+                cliente.save()
+    else:
+        cliente = Cliente.objects.update(nome=nome, sexo=sexo, data=data, peso=peso, altura=altura, imc=imc, avaliacao=avaliacao_do_IMC, endereco=endereco, telefone=telefone, plano=plano, meta=meta, user=user, photo=file )
+    url = '/dados/detail/{}/'.format(cliente.id)
+    return redirect(url)
+
+#leva para a pagina de edicao de cadastro
+@login_required(login_url='/login/')
+def dados_edit(request, id):
+    cliente = Cliente.objects.get(ativo=True, id=id)
+    return render(request, 'cadastro.html', {'cliente': cliente})
+
+#deleta os dados do cliente
+@login_required(login_url='/login/')
+def dados_delete(request, id):
+    cliente = Cliente.objects.get(ativo=True, id=id).delete()
+    return redirect('/dados/all/')
 
 #leva a página de planos da academia
 def planos (request):

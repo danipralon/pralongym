@@ -49,6 +49,7 @@ class Cliente(models.Model):
     imc = models.FloatField ()
     avaliacao = models.CharField(max_length = 50, choices=AVALIACAO_CHOICES)
     endereco = models.CharField(max_length=50)
+    telefone = models.CharField(max_length = 9, blank=True, null=True)
     plano = models.TextField(max_length=30 ,choices=PLANO_CHOICES)
     meta = models.TextField(max_length=30, choices=META_CHOICES) 
     ativo = models.BooleanField(default=True)

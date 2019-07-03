@@ -1,88 +1,102 @@
 {% extends "model-page.html" %}
 {% block content %}
-    <h1 style="text-align: center">Cadastrar novo cliente</h1>
+    <h1 style="text-align: center">
+        {% if cliente %}
+            Alterando cliente
+        {% else %}
+            Cadastrar novo cliente
+        {% endif%}
+    </h1>
     <div class="container" style="padding-left: 35%">
     <div class="row">
-        <form enctype="multipart/form-data" method="POST" >{% csrf_token %}
+        <form action="submit" enctype="multipart/form-data" method="POST" >{% csrf_token %}
+            
+            {% if cliente %}
+                <div class="form-group">
+                    <label for="id">ID: {{ cliente.id }}</label>
+                    <input typeclass="form-control" name="id" type="hidden" value="{{ cliente.id }}">
+                </div>  
+            {% endif%}
+            
             <div class="form-group">
               <label for="nome">Nome: </label>
-              <input class="form-control" name="nome" type="text">
+              <input class="form-control" name="nome" type="text" value="{{ cliente.nome }}">
             </div>  
 
             <div class="form-group">
                 <label for="sexo">Sexo:</label>
                 <select name="sexo" class="custom-select">
-                    <option selected>Selecione</option>
-                    <option >Feminino</option>
-                    <option >Masculino</option>
-                    <option >Trans</option>
-                    <option >Gay</option>
-                    <option >Bi</option>
-                    <option >NaoBinario</option>
-                    <option>Outro</option>
+                    <option {{ cliente|yesno:",selected" }}>Selecione</option>
+                    <option {% if cliente.sexo == "Feminino" %}{{ "selected" }}{% endif %} >Feminino</option>
+                    <option {% if cliente.sexo == "Masculino" %}{{ "selected" }}{% endif %} >Masculino</option>
+                    <option {% if cliente.sexo == "Trans" %}{{ "selected" }}{% endif %} >Trans</option>
+                    <option {% if cliente.sexo == "Gay" %}{{ "selected" }}{% endif %} >Gay</option>
+                    <option {% if cliente.sexo == "Bi" %}{{ "selected" }}{% endif %} >Bi</option>
+                    <option {% if cliente.sexo == "NaoBinario" %}{{ "selected" }}{% endif %} >NaoBinario</option>
+                    <option {% if cliente.sexo == "Outro" %}{{ "selected" }}{% endif %} >Outro</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="data">Data de nascimento:</label>
-                <input class="form-control" name="data" type="data">
+                <input class="form-control" name="data" type="data" value="{{ cliente.data|date:"Y-m-d" }}">
             </div>
             
             <div class="form-group">
                 <label>Peso atual:</label>
-                <input class="form-control" name="peso" type="text">
+                <input class="form-control" name="peso" type="text"value="{{ cliente.peso }}">
             </div>
 
             <div class="form-group">
                 <label>Altura: </label>
-                <input class="form-control" name="altura" type="text">
+                <input class="form-control" name="altura" type="text" value="{{ cliente.altura }}">
             </div>
 
             <div class="form-group">
                 <label> IMC (peso/altura^2): </label>                
-                <input class="form-control" name="imc" type="text">
+                <input class="form-control" name="imc" type="text" value="{{ cliente.imc }}">
             </div>
 
             <div class="form-group">
                 <label>Avaliação IMC: </label>
                 <select name="avaliacao" class="custom-select">
-                    <option selected>Selecione</option>
-                    <option > Menor que 18,5 - Abaixo do peso </option>
-                    <option > Entre 18,5 e 24,9 - Peso Normal </option>
-                    <option > Entre 25 e 29,9 - Sobrepeso </option>
-                    <option > Entre 30 e 34,9 - Obesidade grau 1</option>
-                    <option > Entre 35 e 39,9 - Obesidade grau 2</option>
-                    <option > Mais do que 40 - Obesidade grau 3</option>
+                    <option {{ cliente|yesno:",selected" }}>Selecione</option>
+                    <option {% if cliente.avaliacao == "Menor que 18,5 - Abaixo do peso" %}{{ "selected" }}{% endif %} > Menor que 18,5 - Abaixo do peso </option>
+                    <option {% if cliente.avaliacao == "Entre 18,5 e 24,9 - Peso Normal" %}{{ "selected" }}{% endif %} > Entre 18,5 e 24,9 - Peso Normal </option>
+                    <option {% if cliente.avaliacao == "Entre 25 e 29,9 - Sobrepeso" %}{{ "selected" }}{% endif %} > Entre 25 e 29,9 - Sobrepeso </option>
+                    <option {% if cliente.avaliacao == "Entre 30 e 34,9 - Obesidade grau 1" %}{{ "selected" }}{% endif %} > Entre 30 e 34,9 - Obesidade grau 1</option>
+                    <option {% if cliente.avaliacao == "Entre 35 e 39,9 - Obesidade grau 2" %}{{ "selected" }}{% endif %} > Entre 35 e 39,9 - Obesidade grau 2</option>
+                    <option {% if cliente.avaliacao == "Mais do que 40 - Obesidade grau 3" %}{{ "selected" }}{% endif %} > Mais do que 40 - Obesidade grau 3</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label> Endereço: </label>                
-                <input class="form-control" name="endereco" type="text">
+                <input class="form-control" name="endereco" type="text" value="{{ cliente.endereco }}">
             </div>
 
             <div class="form-group">
                 <label >Telefone</label>
-                <input  class="form-control" name="telefone" type="text" >
+                <input  class="form-control" name="telefone" type="text" value="{{ cliente.telefone }}">
             </div>
 
             <div class="form-group">
                 <select name="plano" class="custom-select">
-                    <option selected>Selecione</option>
-                    <option > 1 modalidade - Bronze  R$60,00 </option>
-                    <option > 2 modalidades - Prata R$100,00</option>
-                    <option > 3 modalidades - Ouro R$120,00 </option>
-                    <option > Academia liberada - Diamante R$ de um rim</option>
+                    <option {{ cliente|yesno:",selected" }}>Selecione</option>
+                    <option {% if cliente.plano == "1 modalidade - Bronze  R$60,00" %}{{ "selected" }}{% endif %} > 1 modalidade - Bronze  R$60,00 </option>
+                    <option {% if cliente.plano == "2 modalidades - Prata R$100,00" %}{{ "selected" }}{% endif %} > 2 modalidades - Prata R$100,00</option>
+                    <option {% if cliente.plano == "3 modalidades - Ouro R$120,00" %}{{ "selected" }}{% endif %} > 3 modalidades - Ouro R$120,00 </option>
+                    <option {% if cliente.plano == "Academia liberada - Diamante R$ de um rim" %}{{ "selected" }}{% endif %} > Academia liberada - Diamante R$ de um rim</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <select name="meta" class="custom-select">
-                    <option selected>Selecione</option>
-                    <option > Eliminar de peso </option>
-                    <option > Ganhar massa</option>
-                    <option > Saúde </option>
-                    <option > Outro</option>
+                    <option {{ cliente|yesno:",selected" }}>Selecione</option>
+                    <option {% if cliente.meta == "Eliminar de peso" %}{{ "selected" }}{% endif %} > Eliminar de peso </option>
+                    <option {% if cliente.meta == "Ganhar massa" %}{{ "selected" }}{% endif %} > Ganhar massa</option>
+                    <option {% if cliente.meta == "Saúde" %}{{ "selected" }}{% endif %} > Saúde </option>
+                    <option {% if cliente.meta == "Outro" %}{{ "selected" }}{% endif %} > Outro</option>
                 </select>
             </div>
 

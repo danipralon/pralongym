@@ -39,6 +39,9 @@ urlpatterns = [
     path('dados/all/',views.dados_all),
 
     path('dados/detail/<id>/',views.dados_detail),
+    path('dados/detail/<id>/edit',views.dados_edit),
+    path('dados/detail/<id>/delete',views.dados_delete),
+    path('dados/detail/<id>/submit',views.edit_cliente),
     
     path('dados/register/',views.register_dados),
     
