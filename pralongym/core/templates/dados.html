@@ -9,8 +9,15 @@
     .container{
         padding: 3px;
     }
-    a.houver{
-        text-decoration:none; 
+
+    .detalhes{
+        text-decoration: none; 
+        color: white; 
+        padding: 5px;
+    }
+   .detalhes:hover{
+       text-decoration: none;
+       color: coral; 
     }
 </style>
 {% endblock %}
@@ -20,13 +27,13 @@
         <div class="row">           
             {% for c in cliente %}
                 <div class="col-sm-4">  
-                    <a href="../detail/{{c.id}}">                 
+                    <a href="../detail/{{c.id}}" class="detalhes" >                 
                         <div class="polaroid">
                             {% if c.photo %}
                                 <img src="{{ c.photo.url }}" style="width: 100%"> 
                             {% endif%}
                             <div class="container">
-                                <p><b>Nome:</b> {{ c.nome}}</p>
+                                <h5><b>Nome:</b> {{ c.nome}}</h5>
                                 <p><b>Id:</b> {{ c.id }}</p>
                             </div>
                         </div>

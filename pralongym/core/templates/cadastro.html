@@ -29,9 +29,6 @@
                     <option {{ cliente|yesno:",selected" }}>Selecione</option>
                     <option {% if cliente.sexo == "Feminino" %}{{ "selected" }}{% endif %} >Feminino</option>
                     <option {% if cliente.sexo == "Masculino" %}{{ "selected" }}{% endif %} >Masculino</option>
-                    <option {% if cliente.sexo == "Trans" %}{{ "selected" }}{% endif %} >Trans</option>
-                    <option {% if cliente.sexo == "Gay" %}{{ "selected" }}{% endif %} >Gay</option>
-                    <option {% if cliente.sexo == "Bi" %}{{ "selected" }}{% endif %} >Bi</option>
                     <option {% if cliente.sexo == "NaoBinario" %}{{ "selected" }}{% endif %} >NaoBinario</option>
                     <option {% if cliente.sexo == "Outro" %}{{ "selected" }}{% endif %} >Outro</option>
                 </select>
@@ -81,7 +78,8 @@
             </div>
 
             <div class="form-group">
-                <select name="plano" class="custom-select">
+                <label >Plano: </label>
+                <select name="plano" class="custom-select">   
                     <option {{ cliente|yesno:",selected" }}>Selecione</option>
                     <option {% if cliente.plano == "1 modalidade - Bronze  R$60,00" %}{{ "selected" }}{% endif %} > 1 modalidade - Bronze  R$60,00 </option>
                     <option {% if cliente.plano == "2 modalidades - Prata R$100,00" %}{{ "selected" }}{% endif %} > 2 modalidades - Prata R$100,00</option>
@@ -91,6 +89,7 @@
             </div>
 
             <div class="form-group">
+                <label >Meta do cliente:</label>
                 <select name="meta" class="custom-select">
                     <option {{ cliente|yesno:",selected" }}>Selecione</option>
                     <option {% if cliente.meta == "Eliminar de peso" %}{{ "selected" }}{% endif %} > Eliminar de peso </option>
